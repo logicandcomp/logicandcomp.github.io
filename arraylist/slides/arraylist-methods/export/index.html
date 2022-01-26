@@ -1,0 +1,1505 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Reveal JS presentation</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://localhost:57741/libs/reveal.js/4.1.3/reset.css">
+	<link rel="stylesheet" href="http://localhost:57741/libs/reveal.js/4.1.3/reveal.css">
+
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	  <!-- highlight Theme -->
+  	
+	  <link rel="stylesheet" href="http://localhost:57741/libs/highlight.js/11.3.1/styles/monokai.min.css">
+	
+	
+		
+	<link rel="stylesheet" href="http://localhost:57741/libs/reveal.js/4.1.3/plugin/chalkboard/style.css">
+	
+	
+	
+		<link rel="stylesheet" href="http://localhost:57741/libs/reveal.js/4.1.3/plugin/customcontrols/style.css">
+	
+	<link rel="stylesheet" href="http://localhost:57741/libs/styles/tasklist.css">
+
+
+
+  <!-- Revealjs Theme -->
+  
+  	<link rel="stylesheet" href="http://localhost:57741/libs/reveal.js/4.1.3/theme/serif.css" id="theme">
+  
+  
+
+
+  <!-- Revealjs Theme -->
+  
+
+ 
+</head>
+
+<body>
+  
+
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <h2>Using ArrayLists</h2>
+<p>A close look at ArrayList methods with examples</p>
+
+            </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>Quick Review of ArrayLists</h3>
+
+            </section>
+        
+            <section >
+                <p>An ArrayList is a data structure that can expand when adding items.</p>
+
+            </section>
+        
+            <section >
+                <p>Resizing happens automatically.</p>
+<p>We can essentially ‘forget’ about its inner-workings.</p>
+
+            </section>
+        
+            <section >
+                <p>We can focus instead on the methods to add and remove items.</p>
+
+            </section>
+        
+            <section >
+                <p>Let’s now look at the interface we are given to work with ArrayLists.</p>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>ArrayList Methods</h3>
+<ul>
+<li><code>add()</code></li>
+<li><code>remove()</code></li>
+<li><code>size()</code></li>
+<li><code>get()</code></li>
+<li><code>set()</code></li>
+<li><code>contains()</code></li>
+</ul>
+
+            </section>
+        
+            <section >
+                <p>We can <code>add()</code> to the end of a list.</p>
+<pre><code class="language-java">myList.add(&quot;Z&quot;);
+</code></pre>
+<p><img src="images/arraylist-add.png" alt="Adding to end of arraylist"></p>
+<p><code>&quot;Z&quot;</code> was added at the end.</p>
+
+            </section>
+        
+            <section >
+                <p>We can also <code>add()</code> at a particular index. Items will shift over to accomodate the new item.</p>
+<pre><code class="language-java">myList.add(1, &quot;X&quot;);
+</code></pre>
+<p><img src="images/arraylist-add-1.png" alt="Adding to middle of arraylist"></p>
+<p><code>&quot;X&quot;</code> was added at index 1.</p>
+
+            </section>
+        
+            <section >
+                <p>Likewise, we can <code>remove()</code> from the list by index.</p>
+<pre><code class="language-Java">myList.remove(1);
+</code></pre>
+<p><img src="images/arraylist-remove.png" alt="Removing from an arraylist"></p>
+<p><code>&quot;X&quot;</code> used to be at index 1. Now it’s gone.</p>
+
+            </section>
+        
+            <section >
+                <p>Or you can <code>remove()</code> the first occurrence of the given object.</p>
+<pre><code class="language-Java">myList.remove(&quot;D&quot;);
+</code></pre>
+<p><img src="images/arraylist-remove-D.png" alt="Removing given object from an arraylist"></p>
+<p>We searched for the first <code>&quot;D&quot;</code> and removed it.</p>
+
+            </section>
+        
+            <section >
+                <p>Retrieve the value at the given index with <code>get()</code>.</p>
+<pre><code class="language-Java">myList.get(3); // returns &quot;E&quot;
+</code></pre>
+<p><img src="images/arraylist-get.png" alt="Getting a value from the arraylist"></p>
+<p>Note: The array <code>[]</code> syntax doesn’t work.</p>
+<p>You can’t use <code>myList[3]</code>.</p>
+
+            </section>
+        
+            <section >
+                <p>Overwrite the value at the given index with <code>set()</code>.</p>
+<pre><code class="language-Java">myList.set(3, &quot;D&quot;);
+</code></pre>
+<p><img src="images/arraylist-set.png" alt="Setting a value in the arraylist"></p>
+<p>Index 3 was set to <code>&quot;D&quot;</code>.</p>
+
+            </section>
+        
+            <section >
+                <p>Check for the presence of a value with <code>contains()</code>.</p>
+<pre><code class="language-Java">myList.contains(&quot;Z&quot;); // returns true
+</code></pre>
+<p><img src="images/arraylist-contains.png" alt="Search for a value in the arraylist"></p>
+<p>The ArrayList contains <code>&quot;Z&quot;</code>. True!</p>
+
+            </section>
+        
+            <section >
+                <p>Get the length of the list with <code>size()</code>.</p>
+<pre><code class="language-Java">myList.size(); // returns 5
+</code></pre>
+<p><img src="images/arraylist-size.png" alt="ArrayList with size 5"></p>
+<p>The size of the list is 5.</p>
+
+            </section>
+        
+            <section >
+                <h4>Quick note:</h4>
+<p>Unfortunately, Java doesn’t use consistent naming for the <code>size</code> function across different data types…</p>
+
+            </section>
+        
+            <section >
+                <table>
+<tr>
+<th>Data structure</th> <th>How to get its size</th>
+</tr>
+<tr>
+<td>Strings</td> <td><code>.length()</code></td>
+</tr>
+<tr>
+<td>Arrays</td> <td><code>.length</code></td>
+</tr>
+<tr>
+<td>ArrayLists</td> <td><code>.size()</code></td>
+</tr>
+</table>
+<p><br>Everyone agrees that this is annoying.</p>
+<p>But we’re stuck with it.</p>
+
+            </section>
+        
+            <section >
+                <p>Now we will look at the syntax for creating an ArrayList.</p>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>Creating ArrayLists</h3>
+<p>Introducing the <code>&lt; &gt;</code> Syntax</p>
+
+            </section>
+        
+            <section >
+                <p>First we will need to add an import:</p>
+<pre><code class="language-java">
+import java.util.ArrayList; ⬅︎
+
+class ArrayListsAreFun
+{
+    ...
+}
+
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Now we can make the breakfast menu for the diner we’ve been dreaming of opening…</p>
+<pre><code class="language-java">
+import java.util.ArrayList;
+
+class ArrayListsAreFun
+{
+    static void printBreakfastMenu()
+    {
+        ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+        menu.add(&quot;pancakes&quot;);
+        menu.add(&quot;eggs&quot;);
+        menu.add(&quot;bacon&quot;);
+    }
+}
+
+</code></pre>
+<p>Let’s go over the new syntax here.</p>
+
+            </section>
+        
+            <section >
+                <p>ArrayList is a data type that represents a collection.</p>
+<p>The things in the collection have their <em>own</em> data type.</p>
+<pre><code class="language-java">static void printBreakfastMenu()
+{
+               ⬇︎
+    ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+    menu.add(&quot;pancakes&quot;);
+    menu.add(&quot;eggs&quot;);
+    menu.add(&quot;bacon&quot;);
+}
+</code></pre>
+<p>So <code>menu</code> is not just an ArrayList.</p>
+<p>It’s an ArrayList of Strings</p>
+<p><code>ArrayList&lt;String&gt;</code> is the total data type.</p>
+
+            </section>
+        
+            <section >
+                <p>Any <em>class</em> name can go inside the <code>&lt;&gt;</code> diamond syntax.</p>
+<p>More on that later.</p>
+<br>
+Back to our example.
+            </section>
+        
+            <section >
+                <p>We are creating an <code>ArrayList&lt;String&gt;</code> object using its constructor.</p>
+<pre><code class="language-java">static void printBreakfastMenu()
+{
+                                                  ⬇︎
+    ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+    menu.add(&quot;pancakes&quot;);
+    menu.add(&quot;eggs&quot;);
+    menu.add(&quot;bacon&quot;);
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>The <code>ArrayList&lt;String&gt;</code> starts out empty.</p>
+<p>We can fill it using the <code>add</code> method.</p>
+<pre><code class="language-java">static void printBreakfastMenu()
+{
+    ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+    menu.add(&quot;pancakes&quot;);  ⬅︎
+    menu.add(&quot;eggs&quot;);
+    menu.add(&quot;bacon&quot;);
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Now let’s print the menu.</p>
+<pre><code class="language-java">static void printBreakfastMenu()
+{
+    ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+    menu.add(&quot;pancakes&quot;);  
+    menu.add(&quot;eggs&quot;);
+    menu.add(&quot;bacon&quot;);
+
+    System.out.println(&quot;Breakfast menu:\n&quot;)
+    for (String m : menu)   ⬅︎
+    {
+        System.out.println(m);
+    }
+}
+</code></pre>
+<p>This style of <code>for</code> loop works with ArrayLists.</p>
+<p>Yay!</p>
+
+            </section>
+        
+            <section >
+                <p>Console output:</p>
+<pre><code class="language-text">
+Breakfast menu:
+
+pancakes
+eggs
+bacon
+
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>We can also use a count-controlled <code>for</code> loop to do the same thing:</p>
+<pre><code class="language-java">static void printBreakfastMenu()
+{
+    ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+    menu.add(&quot;pancakes&quot;);  
+    menu.add(&quot;eggs&quot;);
+    menu.add(&quot;bacon&quot;);
+
+    System.out.println(&quot;Breakfast menu:\n&quot;)
+    for (int i = 0; i &lt; menu.size(); i++)   ⬅︎
+    {
+        System.out.println(menu.get(i));
+    }
+}
+</code></pre>
+<p>Notice that we had to get the items by index with <code>menu.get(i)</code>.</p>
+
+            </section>
+        
+            <section >
+                <p>Console output:</p>
+<pre><code class="language-text">
+Breakfast menu:
+
+pancakes
+eggs
+bacon
+
+</code></pre>
+<p>(same as before)</p>
+
+            </section>
+        
+            <section >
+                <p>But maybe the best way to print ArrayLists is just to put it in a <code>System.out.println()</code>.</p>
+<pre><code class="language-java">static void printBreakfastMenu()
+{
+    ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+    menu.add(&quot;pancakes&quot;);  
+    menu.add(&quot;eggs&quot;);
+    menu.add(&quot;bacon&quot;);
+
+    System.out.println(&quot;Breakfast menu:\n&quot;)
+    System.out.println(menu);  ⬅︎
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Console output:</p>
+<pre><code class="language-text">
+Breakfast menu:
+
+[pancakes, eggs, bacon]
+
+</code></pre>
+<p>If we tried to <code>println()</code> an ordinary array, we would have gotten gibberish instead of this nicely formatted list.</p>
+
+            </section>
+        
+            <section >
+                <p>ArrayLists know how to print themselves nicely.</p>
+<p>That’s because they override the <code>toString()</code> method from the <code>Object</code> class.</p>
+
+            </section>
+        
+            <section >
+                <p>Wait a minute.</p>
+<p>We forgot beverages.</p>
+
+            </section>
+        
+            <section >
+                <p>Add coffee to the start of the list.</p>
+<p>Add orange juice at index 2.</p>
+<pre><code class="language-java">static void printBreakfastMenu()
+{
+    ArrayList&lt;String&gt; menu = new ArrayList&lt;String&gt;();
+
+    menu.add(&quot;pancakes&quot;);  
+    menu.add(&quot;eggs&quot;);
+    menu.add(&quot;bacon&quot;);
+    System.out.println(&quot;Breakfast menu:\n&quot;)
+    System.out.println(menu); 
+
+    menu.add(0, &quot;coffee&quot;);
+    menu.add(2, &quot;orange juice&quot;);    ⬅
+    System.out.println(&quot;\n\nRevised Breakfast menu:\n&quot;)
+    System.out.println(menu);  
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Concole output:</p>
+<pre><code class="language-text">
+Breakfast menu:
+
+[pancakes, eggs, bacon]
+
+
+Revised Breakfast menu:
+
+[coffee, pancakes, orange juice, eggs, bacon]
+
+</code></pre>
+<p>Inserting items into a normal array would have been much harder to do.</p>
+
+            </section>
+        
+            <section >
+                <p>Let’s move on to another example.</p>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>Another ArrayList example</h3>
+<p>Using <code>ArrayList&lt;Integer&gt;</code></p>
+
+            </section>
+        
+            <section >
+                <p>We will need a bit of money to open our diner.</p>
+<p>Let’s play the lotto.</p>
+
+            </section>
+        
+            <section >
+                <p>We will generate some random numbers and add them to our list. Then we’ll print them.</p>
+<p>First, we make the empty ArrayList:</p>
+<pre><code class="language-java">
+static void luckyNumbers(int howMany)
+{
+                ⬇︎ 
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+}
+
+</code></pre>
+<p>Hey, why <code>Arraylist&lt;Integer&gt;</code>?</p>
+<p>Why not <code>ArrayList&lt;int&gt;</code>?</p>
+
+            </section>
+        
+            <section >
+                <p>* deep breath *</p>
+
+            </section>
+        
+            <section >
+                <p>The diamond syntax only allows the name of a class to be placed within it.</p>
+<p>Try inserting a primitive type. It won’t compile.</p>
+<pre><code class="language-java">    // The compiler won't allow the following:
+
+❌  ArrayList&lt;int&gt; badList1;
+❌  ArrayList&lt;double&gt; badList2;
+❌  ArrayList&lt;boolean&gt; badList3;
+❌  ArrayList&lt;char&gt; badList4;
+
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>We need to replace the primitive type with the class version of the same type:</p>
+<pre><code class="language-java">    // The following should be used instead:
+
+✅  ArrayList&lt;Integer&gt; goodList1;
+✅  ArrayList&lt;Double&gt; goodList2;
+✅  ArrayList&lt;Boolean&gt; goodList3;
+✅  ArrayList&lt;Character&gt; goodList4;
+
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>These are called “wrapper classes.”</p>
+<p>They’re classes that wrap around a primitive type.</p>
+
+            </section>
+        
+            <section >
+                <p>Because they are classes, they can fit in to the architectural patterns of Java.</p>
+<p><img src="images/wrapper-class-inheritance.png" alt="wrapper class tree"></p>
+<p>They can take part in inheritance and polymorphism.</p>
+
+            </section>
+        
+            <section >
+                <p>That’s significant because the <code>ArrayList&lt;E&gt;</code> was programmed so that “<code>E</code>” would be some sort of <code>Object</code>.</p>
+<p><img src="images/wrapper-class-inheritance.png" alt="wrapper class tree"></p>
+<p>Later on, it will be more clear why this matters.</p>
+
+            </section>
+        
+            <section >
+                <p>Sometimes you’ll hear the word “box” instead of “wrap” in this context.</p>
+<p><img src="images/integer-box-int.png" alt="Integer n boxes int"></p>
+<p>As in: “The <code>Integer n </code>boxes the<code> int 42</code>.”</p>
+
+            </section>
+        
+            <section >
+                <p>Okay, back to gambling.</p>
+
+            </section>
+        
+            <section >
+                <p>We need to fill our list with random numbers.</p>
+<p>The user of the method will supply <code>howMany</code> we need to add to the list.</p>
+<pre><code class="language-java">
+static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    for (int i = 0; i &lt; howMany; i++)  ⬅︎
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);
+    }
+
+    System.out.println(lotto);
+}
+
+</code></pre>
+<p>So we need a loop that runs <code>howMany</code> times.</p>
+
+            </section>
+        
+            <section >
+                <p>Good for you if you noticed something suspicious about this step:</p>
+<pre><code class="language-java">
+static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    for (int i = 0; i &lt; howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+
+</code></pre>
+<p>What would seem to be the problem with this line?</p>
+<p>Maybe you could find two different issues with this.</p>
+
+            </section>
+        
+            <section >
+                <ul>
+<li>
+<p>Issue 1: What’s the deal with adding an <code>int</code> to an <code>ArrayList&lt;Integer&gt;</code>?</p>
+</li>
+<li>
+<p>Issue 2: What if we get the same number twice by chance? That’s not how lotteries work.</p>
+</li>
+</ul>
+<pre><code class="language-java">
+static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    for (int i = 0; i &lt; howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Issue 2 is a real problem that we will address in a moment.</p>
+<p>Issue 1 would be a problem, except that Java will automatically convert <code>int</code>s into <code>Integer</code>s when necessary.</p>
+
+            </section>
+        
+            <section >
+                <p>Conversions between <code>int</code> and <code>Integer</code> happen whenever you need to use one type like the other.</p>
+<p><br><br>
+It’s a feature called autoboxing / autounboxing.</p>
+
+            </section>
+        
+            <section >
+                <p>Back to issue 2.</p>
+<p>How would you fix the problem of potentially getting duplicate numbers in the list?</p>
+<pre><code class="language-java">
+static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    for (int i = 0; i &lt; howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+
+</code></pre>
+<p>Take some time now and find a solution.</p>
+
+            </section>
+        
+            <section >
+                <p>Hint 1:</p>
+<p>Consider using an <code>ArrayList</code> method.</p>
+
+            </section>
+        
+            <section >
+                <p>Hint 2:</p>
+<p>Use the <code>contains()</code> method in an if statement to guard this line.</p>
+<pre><code class="language-java">static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    for (int i = 0; i &lt; howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>This is a little better, but now we’ve introduced another problem.</p>
+<pre><code class="language-java">static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    for (int i = 0; i &lt; howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        if (!lotto.contains(r)) ⬅︎
+        {
+            lotto.add(r);  
+        }
+    }
+
+    System.out.println(lotto);
+}
+</code></pre>
+<p>What is it?</p>
+
+            </section>
+        
+            <section >
+                <p>We may have fewer than <code>howMany</code> items in the list.</p>
+<p>Think of a way to fix this issue.</p>
+
+            </section>
+        
+            <section >
+                <p>Maybe this is the best way:</p>
+<pre><code class="language-java">static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    while (lotto.size() &lt; howMany)    ⬅︎
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        if (!lotto.contains(r))
+        {
+            lotto.add(r);  
+        }
+    }
+
+    System.out.println(lotto);
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>There is one more issue.</p>
+<p>Can you think of a reason why this method would potentially get stuck in an infinite loop?</p>
+<pre><code class="language-java">static void luckyNumbers(int howMany)
+{
+    ArrayList&lt;Integer&gt; lotto = new ArrayList&lt;Integer&gt;();
+
+    while (lotto.size() &lt; howMany)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        if (!lotto.contains(r))
+        {
+            lotto.add(r);  
+        }
+    }
+
+    System.out.println(lotto);
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>If <code>howMany = 137</code>, for instance, the method would never complete.</p>
+<pre><code class="language-java">static void luckyNumbers(int howMany)
+{
+    if (howMany &gt; 100)   ⬅︎
+    {
+        throw new IllegalArgumentException( &quot;Input out of &quot; +
+        &quot;range. Cannot generate more than 100 unique values &quot; + 
+        &quot;from 0-99.&quot;);
+    }
+
+    ...
+}
+</code></pre>
+<p>So we’ll check for a valid input right at the start.</p>
+
+            </section>
+        
+            <section >
+                <p>Tha’s all for this example.</p>
+<p>We’ve seen that the ArrayList’s <code>contains()</code> method is handy!</p>
+<p>It was easier to write this with an ArrayList than it would have been to use a normal array.</p>
+
+            </section>
+        
+            <section >
+                <p>Let’s see one more example.</p>
+<p>This time we’ll make our own simple class and put objects of the class in the ArrayList.</p>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>Final ArrayList Example</h3>
+<p>ArrayLists and custom objects</p>
+
+            </section>
+        
+            <section >
+                <p>It turns out that playing the lottery is a great way to lose money, not make it.</p>
+<p>The real money is in starting up a casino.</p>
+<p>The house always wins.</p>
+
+            </section>
+        
+            <section >
+                <p>Let’s make some playing cards that will be used for our games.</p>
+
+            </section>
+        
+            <section >
+                <p>A simple <code>Card</code> class might look like this:</p>
+<pre><code class="language-java">class Card
+{
+    enum Suit { SPADES, HEARTS, CLUBS, DIAMONDS }
+    
+    Suit suit;
+    int rank;
+
+    
+}
+</code></pre>
+<p>We use an inner <code>enum</code> class to enumerate the suits.</p>
+<p>The “rank” of a card (Ace - King) will be an <code>int</code>.</p>
+<p>This design decision lets us easily compare and order cards (should we ever decide to do that).</p>
+
+            </section>
+        
+            <section >
+                <p>Let’s think about the constructor:</p>
+<pre><code class="language-java">...
+
+Card(int rank, Suit suit)
+{
+    this.rank = rank;  ⬅︎
+    this.suit = suit;
+}
+
+...
+</code></pre>
+<p>The suits are enumerated, so they can’t be given an invalid value.</p>
+<p>The ranks, though?</p>
+<p>They could be given an input that’s out of range.</p>
+
+            </section>
+        
+            <section >
+                <p>Exercise:</p>
+<p>Add data validation to the constructor.</p>
+<pre><code class="language-java">...
+
+Card(int rank, Suit suit)
+{
+    this.rank = rank;  ⬅︎
+    this.suit = suit;
+}
+
+...
+</code></pre>
+<p>Note: 1 = Ace and 13 = King.</p>
+
+            </section>
+        
+            <section >
+                <p>We throw an exception if the input is out of range:</p>
+<pre><code class="language-java">...
+
+Card(int rank, Suit suit)
+{
+    if (rank &lt; 1 || rank &gt; 13)
+    {
+        throw new IllegalArgumentException(
+            &quot;Card ranks must be between 1 and 13.&quot;);
+    }
+    this.rank = rank;
+    this.suit = suit;
+}
+
+...
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>We will add one more method to the <code>Card</code> class.</p>
+<p>We will override <code>toString</code> so we can print our cards out like this: ♠︎A ♡3 ♣︎K ♢J .</p>
+<p>Card suits are in the unicode list of symbols.</p>
+<p>So we can use them inside of Strings in our program.</p>
+
+            </section>
+        
+            <section >
+                <p>We add the suit symbol and the rank symbol to a String and return it at the end:</p>
+<pre><code class="language-java">...
+
+@Override
+public String toString()
+{
+    String cardString = &quot;&quot;;
+
+    if (suit == Suit.SPADES) cardString += &quot;♠︎&quot;;
+    else if (suit == Suit.HEARTS) cardString += &quot;♡︎&quot;;
+    else if (suit == Suit.CLUBS) cardString += &quot;♣︎&quot;;
+    else cardString += &quot;♢&quot;;
+
+    if (rank == 1) cardString += &quot;A&quot;;
+    else if (rank == 11) cardString += &quot;J&quot;;
+    else if (rank == 12) cardString += &quot;Q&quot;;
+    else if (rank == 13) cardString += &quot;K&quot;;
+    else cardString += Integer.toString(rank);
+
+    return cardString;
+}
+
+...
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Now we have a class to represent cards.</p>
+<p>Let’s create a class that will represent a collection of cards.</p>
+
+            </section>
+        
+            <section >
+                <p>Our <code>Deck</code> class will wrap an ArrayList.</p>
+<p>It will include the basic methods that all card games need.</p>
+
+            </section>
+        
+            <section >
+                <p>This is a good start:</p>
+<pre><code class="language-java">import java.util.ArrayList;
+
+class Deck
+{
+    ArrayList&lt;Card&gt; cards;
+
+    Deck()
+    {
+        cards = new ArrayList&lt;Card&gt;();
+    }
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>But adding cards this way is going to get ugly:</p>
+<pre><code class="language-java">...
+
+Deck()
+{
+    cards = new ArrayList&lt;Card&gt;();
+
+    cards.add(new Card(1, Card.Suit.SPADES));
+    cards.add(new Card(2, Card.Suit.SPADES));
+    cards.add(new Card(3, Card.Suit.SPADES));
+    cards.add(new Card(4, Card.Suit.SPADES));
+    // sigh...
+}
+
+...
+</code></pre>
+<p>There’s gotta be a better way to fill this ArrayList.</p>
+<p>Exercise: Abandon this strategy. Instead, write a concise section of code to create a complete deck.</p>
+
+            </section>
+        
+            <section >
+                <p>Here’s a way using an outer for loop for the suits.</p>
+<p>The inner for loop cycles through all 13 ranks.</p>
+<pre><code class="language-java">...
+
+Deck()
+{
+    cards = new ArrayList&lt;Card&gt;();
+    
+    for (int s = 1; s &lt; 5; s++)
+    {
+        for (int r = 1; r &lt; 14; r++)
+        {
+            Card.Suit suit;
+            if (s == 1) suit = Card.Suit.SPADES;
+            else if (s == 2) suit = Card.Suit.HEARTS;
+            else if (s == 3) suit = Card.Suit.CLUBS;
+            else suit = Card.Suit.DIAMONDS;
+            
+            cards.add(new Card(r, suit));
+        }
+    }
+}
+
+...
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Looping through the values of an enum is a pretty common task.</p>
+<p>So Java gives us the <code>values()</code> method to return an array of the enum’s values.</p>
+
+            </section>
+        
+            <section >
+                <p>So here’s an even more concise way to write that part of the constructor:</p>
+<pre><code class="language-java">Deck()
+{
+    cards = new ArrayList&lt;Card&gt;();
+    
+    for (Card.Suit s : Card.Suit.values())  ⬅︎
+    {
+        for (int r = 1; r &lt; 14; r++)
+        {
+            cards.add(new Card(r, s));
+        }
+    }
+}
+</code></pre>
+<p>The two styles of for loop working in harmony…</p>
+<p>It’s beautiful.</p>
+
+            </section>
+        
+            <section >
+                <p>Now we have a rather orderly deck.</p>
+<p>We need a method to randomize it.</p>
+
+            </section>
+        
+            <section >
+                <p>Two possible strategies occur:</p>
+<ol>
+<li>We could shuffle and deal off the end of the array.</li>
+<li>We could pick a random index and deal from “the middle” without shuffling.</li>
+</ol>
+
+            </section>
+        
+            <section >
+                <p>Let’s pursue strategy 2.</p>
+<p>It seems simpler to code.</p>
+
+            </section>
+        
+            <section >
+                <p>Exercise:</p>
+<p>Write a method called <code>randomDeal()</code> that returns a <code>Card</code> object from a random position in the deck.</p>
+<p>The method should also remove that card from the deck’s ArrayList.</p>
+<p>We don’t want no double-dealing.</p>
+<p>We’re an honest establishment!</p>
+
+            </section>
+        
+            <section >
+                <p>Hint 1:</p>
+<pre><code class="language-java">Card randomDeal()
+{
+    int randIndex = ...
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Hint 2:</p>
+<pre><code class="language-java">Card randomDeal()
+{
+    int randIndex = (int) (Math.random() * cards.size());
+
+    Card c = ...
+    
+    ...
+    
+    return c;
+}
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Solution:</p>
+<pre><code class="language-java">Card randomDeal()
+{
+    int randIndex = (int) (Math.random() * cards.size());
+
+    Card c = cards.get(randIndex);
+    
+    cards.remove(randIndex);
+    
+    return c;
+}
+</code></pre>
+<p>We could also have used <code>cards.remove(c)</code></p>
+<p>But removing by index will be quicker than searching to remove a particular object.</p>
+
+            </section>
+        
+            <section >
+                <p>Let’s also appreciate that our method only works because of how ArrayLists keep their data.</p>
+<p>Removing values at an index doesn’t leave behind any annoying gaps.</p>
+
+            </section>
+        
+            <section >
+                <p>That’s all for the examples.</p>
+<p>Try some challenge problems.</p>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>Challenge Problems:</h3>
+
+            </section>
+        
+            <section >
+                <p>Challenge 1:</p>
+<p>Write a static method called <code>splitEvenOdd(int[] numbers)</code>. It takes an ordinary <code>int[]</code> array of numbers and classifies them by putting them into an evens and odds ArrayList.</p>
+<p>Then it should print them to the console.</p>
+<p>Example input: <code>{8, 2, 9, 1, 3, 11, 7, 6, 7}</code></p>
+<p>Expected output:</p>
+<pre><code class="language-text">
+Evens: [8, 2, 6]
+Odds: [9, 1, 3, 11, 7, 7]
+
+</code></pre>
+<p>Hint: Use <code>n % 2 == 0</code> to test whether n is even.</p>
+
+            </section>
+        
+            <section >
+                <p>Challenge 2:</p>
+<p>Write the method <code>dealHands()</code> that will deal out 5 card poker hands to four different players.</p>
+<p>Their hands should be printed to the console like this:</p>
+<pre><code class="language-text">
+Player 1: ♠6 ♠A ♣4 ♡8 ♡2 
+Player 2: ♡5 ♢3 ♡K ♣A ♣K 
+Player 3: ♡J ♡7 ♢A ♣8 ♣2 
+Player 4: ♣10 ♢K ♢7 ♡Q ♡4
+
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Challenge 3:</p>
+<p>A list of prime numbers can be generated by trial division. Write the static method <code>printPrimesUpto(int n) </code> by implementing the following algorithm.</p>
+<p>Algorithm:</p>
+<ol>
+<li>Begin the list of primes with only 2 in it.</li>
+<li>Iterate from 3 to <code>n</code>.</li>
+<li>Add the number to the list of primes if it is not divisible by any number in the list.</li>
+</ol>
+<p>Hint: Use <code>%</code> to get the division remainder.</p>
+
+            </section>
+        
+            <section >
+                <p>Challenge 3:</p>
+<p>A list of fibonacci numbers begins <code>[1, 1, ...]</code>  and can be continued by appending the sum of the last two elements in the sequence. Write the static method <code>printFibs(int howMany)</code> that will print out a list of <code>howMany</code> fibonacci numbers.</p>
+<p>Example: calling <code>printFibs(10)</code> should give the following console output:</p>
+<pre><code class="language-text">
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+</code></pre>
+
+            </section>
+        
+            <section >
+                <p>Challenge 4:</p>
+<p>Write the static method <code>removeDuplicates(String[] words)</code> that takes an ordinary String[] array and prints the same array back with duplicates removed:</p>
+<p>Example input: <code>{&quot;The&quot;, &quot;land&quot;, &quot;of&quot;, &quot;of&quot;, &quot;the&quot;, &quot;land&quot;, &quot;free&quot;, &quot;of&quot;, &quot;the&quot;, &quot;free&quot;}</code></p>
+<p>Expected output:</p>
+<pre><code class="language-text">
+[The, land, of, the, free]
+
+</code></pre>
+<p>Notice that “The” and “the” are different Strings.</p>
+
+            </section>
+        
+            <section >
+                <p>Challenge 5:</p>
+<p>Rewrite the <code>luckyNumbers()</code> method to use a normal <code>int[]</code> array. Avoid using an ArrayList altogether.</p>
+<p>The method must have the same functionality and print to the console in the same format.</p>
+
+            </section>
+        
+            <section >
+                <p>Challenge 6:</p>
+<p>Implement a <code>shuffle()</code> method for our <code>Deck</code> class.</p>
+<p>Write the method twice…</p>
+<ol>
+<li>
+<p>The first time will be based on your own idea of how to randomize an ordered set. Try anything you think will work.</p>
+</li>
+<li>
+<p>And the second time you write the method will be after researching the Fisher-Yates shuffling algorithm. Do not specifically search for a Java implementation of the algorithm. Your goal is to implement it in Java on your own.</p>
+</li>
+</ol>
+
+            </section>
+        
+            <section >
+                <p>Good luck!</p>
+
+            </section>
+        
+
+    </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  	
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/reveal.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/zoom/zoom.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/notes/notes.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/search/search.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/markdown/markdown.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/highlight/highlight.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/menu/menu.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/math/math.js"></script>
+
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/fullscreen/plugin.js"></script>
+  
+  	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/animate/plugin.js"></script>
+  	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/animate/svg.min.js"></script>
+  
+  	 <!--	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/anything/plugin.js"></script> -->
+
+ <!--	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/audio-slideshow/plugin.js"></script>  -->
+<!--	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/audio-slideshow/recorder.js"></script>-->
+<!--	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/audio-slideshow/RecordRTC.js"></script>-->
+
+<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/chalkboard/plugin.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/customcontrols/plugin.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/embed-tweet/plugin.js"></script>
+
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/chart/chart.min.js"></script>
+	<script src="http://localhost:57741/libs/reveal.js/4.1.3/plugin/chart/plugin.js"></script>
+
+  <script>
+
+		const printPlugins = [
+			RevealNotes, 
+			RevealHighlight,
+			RevealMath,
+			RevealAnimate,
+			RevealChalkboard, 
+			RevealEmbedTweet,
+			RevealChart,
+		];
+
+		const plugins =  [...printPlugins,
+		RevealZoom, 
+		RevealSearch, 
+				RevealMarkdown, 
+				RevealMenu, 
+				RevealFullscreen,
+				//RevealAnything,
+				//RevealAudioSlideshow,
+				//RevealAudioRecorder,
+				RevealCustomControls, 
+				// poll
+				// question
+				// seminar
+				 ]
+
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: true,
+			controlsTutorial: true,
+			controlsLayout: 'bottom-right',
+			controlsBackArrows: 'faded',
+			progress: true,
+			slideNumber: false,
+			//#showSlideNumber "all" "print" "speaker"
+			hash: true,//#  hash: false,
+			//# respondToHashChanges: true,
+			//# history: false,
+			keyboard: true,
+			//#keyboardCondition: null,
+			overview: true,
+			center: true,
+			touch: true,
+			loop: false,
+			rtl: false,
+			//#navigationMode: 'default', linear grid
+			shuffle: false,
+			fragments: true,
+			fragmentInURL: false,
+			embedded: false,
+			help: true,
+			//#pause: true
+			showNotes: false,
+			autoPlayMedia: false, // TODO fix this to a nullable value
+			//#preloadIframes: null. true false
+			//#autoAnimate: true
+			//#autoAnimateMatcher: null,
+			//#autoAnimateEasing: 'ease',
+			//autoAnimateDuration: 1.0,
+			//#autoAnimateUnmatched: true
+			//#autoAnimateStyles: []
+			autoSlide: 0, // TODO fix this to a falseable value
+			autoSlideStoppable: true,
+			autoSlideMethod: '0',
+			defaultTiming: 120,
+			mouseWheel: false,
+			//#previewLinks: false
+			//#postMessage: true,  // TODO : this can cause issues with the vscode api ???
+			//#postMessageEvents: false,
+			//#focusBodyOnPageVisibilityChange: true,
+			transition: 'none',
+			transitionSpeed: 'default',
+			backgroundTransition: 'fade',
+			//#pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+			//#pdfSeparateFragments: true,
+			//#pdfPageHeightOffset: -1,
+			viewDistance: 3,
+			//#mobileViewDistance: 2,
+			display: 'block',
+			//#hideInactiveCursor: true,
+			//#hideCursorTime: 5000
+
+			// Parallax Background
+			parallaxBackgroundImage: '',
+			parallaxBackgroundSize: '',
+			parallaxBackgroundHorizontal: 0,
+			parallaxBackgroundVertical: 0,
+			
+			//Presentation Size
+			width: 960,
+			height: 700,
+			margin: 0.04,
+			minScale: 0.2,
+			maxScale: 2,
+			disableLayout: false,
+
+			audio: {
+				prefix: 'audio/', 	// audio files are stored in the "audio" folder
+				suffix: '.ogg',		// audio files have the ".ogg" ending
+				textToSpeechURL: null,  // the URL to the text to speech converter
+				defaultNotes: false, 	// use slide notes as default for the text to speech converter
+				defaultText: false, 	// use slide text as default for the text to speech converter
+				advance: 0, 		// advance to next slide after given time in milliseconds after audio has played, use negative value to not advance
+				autoplay: false,	// automatically start slideshow
+				defaultDuration: 5,	// default duration in seconds if no audio is available
+				defaultAudios: true,	// try to play audios with names such as audio/1.2.ogg
+				playerOpacity: 0.05,	// opacity value of audio player if unfocused
+				playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls
+				startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+			},
+			
+			chalkboard: { // font-awesome.min.css must be available
+					//src: "chalkboard/chalkboard.json",
+					storage: "chalkboard-demo",
+				},
+			
+			customcontrols: {
+					controls: [
+      						{
+						  id: 'toggle-overview',
+						  title: 'Toggle overview (O)',
+						  icon: '<i class="fa fa-th"></i>',
+						  action: 'Reveal.toggleOverview();'
+						}
+						,
+						{ icon: '<i class="fa fa-pen-square"></i>',
+						  title: 'Toggle chalkboard (B)',
+						  action: 'RevealChalkboard.toggleChalkboard();'
+						},
+						{ icon: '<i class="fa fa-pen"></i>',
+						  title: 'Toggle notes canvas (C)',
+						  action: 'RevealChalkboard.toggleNotesCanvas();'
+						}
+				]
+			},
+			chart: {
+					defaults: { 
+						color: 'lightgray', // color of labels
+						scale: { 
+							beginAtZero: true, 
+							ticks: { stepSize: 1 },
+							grid: { color: "lightgray" } , // color of grid lines
+						},
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ] }, 
+					bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+					pie: { backgroundColor: [ ["rgba(0,0,0,.8)" , "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"] ]},
+					radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+			},
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
+				// pass other options into `MathJax.Hub.Config()`
+				TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: (window.location.search.match(/print-pdf/gi) ? printPlugins : plugins ) 
+		});
+			
+
+
+	    // Change chalkboard theme : 
+		function changeTheme(input) {
+			var config = {};
+			config.theme = input.value;
+			Reveal.getPlugin("RevealChalkboard").configure(config);
+			input.blur();
+		}
+
+		// // Handle the message inside the webview
+        // window.addEventListener('message', event => {
+
+        //     const message = event.data; // The JSON data our extension sent
+
+        //     switch (message.command) {
+        //         case 'refactor':
+        //             Reveal.toggleHelp();
+        //     }
+        // });
+
+		if (window.location.search.match(/print-pdf-now/gi)) {
+      		setTimeout(() => {
+				window.print();
+			  }, 2500);
+			
+    }
+		
+
+	</script>
+
+</body>
+
+</html>
