@@ -141,7 +141,7 @@ The size of the list is 5.
 
 --
 
-### Quick note:
+#### Quick aside:
 
 Unfortunately, Java doesn't use consistent naming for the `size` function across different data types...
 
