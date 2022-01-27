@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal-md</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/serif.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/zenburn.css" />
+
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+
+## Using ArrayLists
+
+A close look at ArrayList methods with examples
+</script></section><section ><section data-markdown><script type="text/template">
+### Quick Review of ArrayLists
+</script></section><section data-markdown><script type="text/template">
+An ArrayList is a data structure that can expand when adding items.
+</script></section><section data-markdown><script type="text/template">
+Resizing happens automatically.
+
+We can essentially 'forget' about its inner-workings.
+</script></section><section data-markdown><script type="text/template">
+We can focus instead on the methods to add and remove items.
+</script></section><section data-markdown><script type="text/template">
+Let's now look at the interface we are given to work with ArrayLists.
+</script></section></section><section ><section data-markdown><script type="text/template">
+### ArrayList Methods
+
+- `add()`
+- `remove()`
+- `size()`
+- `get()`
+- `set()`
+- `contains()`
+</script></section><section data-markdown><script type="text/template">
+We can `add()` to the end of a list.
+
+```java
+myList.add("Z");
+```
+
+![Adding to end of arraylist](images/arraylist-add.png)
+
+`"Z"` was added at the end.
+</script></section><section data-markdown><script type="text/template">
+We can also `add()` at a particular index. Items will shift over to accomodate the new item.
+
+```java
+myList.add(1, "X");
+```
+
+![Adding to middle of arraylist](images/arraylist-add-1.png)
+
+`"X"` was added at index 1.
+</script></section><section data-markdown><script type="text/template">
+Likewise, we can `remove()` from the list by index.
+
+```Java
+myList.remove(1);
+```
+
+![Removing from an arraylist](images/arraylist-remove.png)
+
+`"X"` used to be at index 1. Now it's gone.
+</script></section><section data-markdown><script type="text/template">
+Or you can `remove()` the first occurrence of the given object.
+
+```Java
+myList.remove("D");
+```
+
+![Removing given object from an arraylist](images/arraylist-remove-D.png)
+
+We searched for the first `"D"` and removed it.
+</script></section><section data-markdown><script type="text/template">
+Retrieve the value at the given index with `get()`.
+
+```Java
+myList.get(3); // returns "E"
+```
+
+![Getting a value from the arraylist](images/arraylist-get.png)
+
+<aside class="notes"><p>The array <code>[]</code> syntax doesn&#39;t work.</p>
+<p>You can&#39;t use <code>myList[3]</code>.</p>
+</aside></script></section><section data-markdown><script type="text/template">
+Overwrite the value at the given index with `set()`.
+
+```Java
+myList.set(3, "D");
+```
+
+![Setting a value in the arraylist](images/arraylist-set.png)
+
+Index 3 was set to `"D"`.
+</script></section><section data-markdown><script type="text/template">
+Check for the presence of a value with `contains()`.
+
+```Java
+myList.contains("Z"); // returns true
+```
+
+![Search for a value in the arraylist](images/arraylist-contains.png)
+
+
+The ArrayList contains `"Z"`. True!
+</script></section><section data-markdown><script type="text/template">
+Get the length of the list with `size()`.
+
+```Java
+myList.size(); // returns 5
+```
+
+![ArrayList with size 5](images/arraylist-size.png)
+
+The size of the list is 5.
+</script></section><section data-markdown><script type="text/template">
+### Quick <aside class="notes"><p>Unfortunately, Java doesn&#39;t use consistent naming for the <code>size</code> function across different data types...</p>
+</aside></script></section><section data-markdown><script type="text/template">
+<table>
+<tr>
+<th>Data structure</th> <th>How to get its size</th>
+</tr>
+<tr>
+<td>Strings</td> <td><code>.length()</code></td>
+</tr>
+<tr>
+<td>Arrays</td> <td><code>.length</code></td>
+</tr>
+<tr>
+<td>ArrayLists</td> <td><code>.size()</code></td>
+</tr>
+</table>
+
+<br>Everyone agrees that this is annoying. 
+
+But we're stuck with it.
+</script></section><section data-markdown><script type="text/template">
+Now we will look at the syntax for creating an ArrayList.
+</script></section></section><section ><section data-markdown><script type="text/template">
+### Creating ArrayLists
+Introducing the `< >` Syntax
+</script></section><section data-markdown><script type="text/template">
+First we will need to add an import:
+
+```java
+
+import java.util.ArrayList; ⬅︎
+
+class ArrayListsAreFun
+{
+    ...
+}
+
+```
+</script></section><section data-markdown><script type="text/template">
+Now we can make the breakfast menu for the diner we've been dreaming of opening...
+
+```java
+
+import java.util.ArrayList;
+
+class ArrayListsAreFun
+{
+    static void printBreakfastMenu()
+    {
+        ArrayList<String> menu = new ArrayList<String>();
+
+        menu.add("pancakes");
+        menu.add("eggs");
+        menu.add("bacon");
+    }
+}
+
+```
+
+Let's go over the new syntax here.
+</script></section><section data-markdown><script type="text/template">
+ArrayList is a data type that represents a collection. 
+
+The things in the collection have their *own* data type. 
+
+
+```java
+static void printBreakfastMenu()
+{
+               ⬇︎
+    ArrayList<String> menu = new ArrayList<String>();
+
+    menu.add("pancakes");
+    menu.add("eggs");
+    menu.add("bacon");
+}
+```
+
+So `menu` is not just an ArrayList. 
+
+It's an ArrayList of Strings
+
+`ArrayList<String>` is the total data type.
+</script></section><section data-markdown><script type="text/template">
+Any *class* name can go inside the `<>` diamond syntax.
+
+More on that later.
+
+<br>
+Back to our example.
+</script></section><section data-markdown><script type="text/template">
+We are creating an `ArrayList<String>` object using its constructor.
+
+```java
+static void printBreakfastMenu()
+{
+                                                  ⬇︎
+    ArrayList<String> menu = new ArrayList<String>();
+
+    menu.add("pancakes");
+    menu.add("eggs");
+    menu.add("bacon");
+}
+```
+</script></section><section data-markdown><script type="text/template">
+The `ArrayList<String>` starts out empty.
+
+We can fill it using the `add` method.
+
+```java
+static void printBreakfastMenu()
+{
+    ArrayList<String> menu = new ArrayList<String>();
+
+    menu.add("pancakes");  ⬅︎
+    menu.add("eggs");
+    menu.add("bacon");
+}
+```
+</script></section><section data-markdown><script type="text/template">
+Now let's print the menu.
+
+
+```java
+static void printBreakfastMenu()
+{
+    ArrayList<String> menu = new ArrayList<String>();
+
+    menu.add("pancakes");  
+    menu.add("eggs");
+    menu.add("bacon");
+
+    System.out.println("Breakfast menu:\n")
+    for (String m : menu)   ⬅︎
+    {
+        System.out.println(m);
+    }
+}
+```
+
+This style of `for` loop works with ArrayLists. 
+
+Yay!
+</script></section><section data-markdown><script type="text/template">
+Console output:
+
+```text
+
+Breakfast menu:
+
+pancakes
+eggs
+bacon
+
+```
+</script></section><section data-markdown><script type="text/template">
+We can also use a count-controlled `for` loop to do the same thing:
+
+```java
+static void printBreakfastMenu()
+{
+    ArrayList<String> menu = new ArrayList<String>();
+
+    menu.add("pancakes");  
+    menu.add("eggs");
+    menu.add("bacon");
+
+    System.out.println("Breakfast menu:\n")
+    for (int i = 0; i < menu.size(); i++)   ⬅︎
+    {
+        System.out.println(menu.get(i));
+    }
+}
+```
+
+Notice that we had to get the items by index with `menu.get(i)`.
+</script></section><section data-markdown><script type="text/template">
+Console output:
+
+```text
+
+Breakfast menu:
+
+pancakes
+eggs
+bacon
+
+```
+
+(same as before)
+</script></section><section data-markdown><script type="text/template">
+But maybe the best way to print ArrayLists is just to put it in a `System.out.println()`.
+
+```java
+static void printBreakfastMenu()
+{
+    ArrayList<String> menu = new ArrayList<String>();
+
+    menu.add("pancakes");  
+    menu.add("eggs");
+    menu.add("bacon");
+
+    System.out.println("Breakfast menu:\n")
+    System.out.println(menu);  ⬅︎
+}
+```
+</script></section><section data-markdown><script type="text/template">
+Console output:
+
+```text
+
+Breakfast menu:
+
+[pancakes, eggs, bacon]
+
+```
+
+If we tried to `println()` an ordinary array, we would have gotten gibberish instead of this nicely formatted list.
+</script></section><section data-markdown><script type="text/template">
+ArrayLists know how to print themselves nicely.
+
+That's because they override the `toString()` method from the `Object` class.
+</script></section><section data-markdown><script type="text/template">
+Wait a minute. 
+
+We forgot beverages.
+</script></section><section data-markdown><script type="text/template">
+Add coffee to the start of the list. 
+
+Add orange juice at index 2.
+
+```java
+static void printBreakfastMenu()
+{
+    ArrayList<String> menu = new ArrayList<String>();
+
+    menu.add("pancakes");  
+    menu.add("eggs");
+    menu.add("bacon");
+    System.out.println("Breakfast menu:\n")
+    System.out.println(menu); 
+
+    menu.add(0, "coffee");
+    menu.add(2, "orange juice");    ⬅
+    System.out.println("\n\nRevised Breakfast menu:\n")
+    System.out.println(menu);  
+}
+```
+</script></section><section data-markdown><script type="text/template">
+Concole output:
+
+```text
+
+Breakfast menu:
+
+[pancakes, eggs, bacon]
+
+
+Revised Breakfast menu:
+
+[coffee, pancakes, orange juice, eggs, bacon]
+
+```
+
+Inserting items into a normal array would have been much harder to do.
+</script></section><section data-markdown><script type="text/template">
+Let's move on to another example.
+</script></section></section><section ><section data-markdown><script type="text/template">
+### Another ArrayList example
+Using `ArrayList<Integer>`
+</script></section><section data-markdown><script type="text/template">
+We will need a bit of money to open our diner.
+
+Let's play the lotto.
+</script></section><section data-markdown><script type="text/template">
+We will generate some random numbers and add them to our list. Then we'll print them.
+
+First, we make the empty ArrayList:
+
+```java
+
+static void luckyNumbers(int howMany)
+{
+                ⬇︎ 
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+}
+
+```
+
+Hey, why `Arraylist<Integer>`?
+
+Why not `ArrayList<int>`? 
+</script></section><section data-markdown><script type="text/template">
+\* deep breath \*
+</script></section><section data-markdown><script type="text/template">
+The diamond syntax only allows the name of a class to be placed within it.
+
+Try inserting a primitive type. It won't compile.
+
+```java
+    // The compiler won't allow the following:
+
+❌  ArrayList<int> badList1;
+❌  ArrayList<double> badList2;
+❌  ArrayList<boolean> badList3;
+❌  ArrayList<char> badList4;
+
+```
+</script></section><section data-markdown><script type="text/template">
+We need to replace the primitive type with the class version of the same type:
+
+```java
+    // The following should be used instead:
+
+✅  ArrayList<Integer> goodList1;
+✅  ArrayList<Double> goodList2;
+✅  ArrayList<Boolean> goodList3;
+✅  ArrayList<Character> goodList4;
+
+```
+</script></section><section data-markdown><script type="text/template">
+These are called "wrapper classes."
+
+They're classes that wrap around a primitive type.
+</script></section><section data-markdown><script type="text/template">
+Because they are classes, they can fit in to the architectural patterns of Java.
+
+![wrapper class tree](images/wrapper-class-inheritance.png)
+
+They can take part in inheritance and polymorphism.
+</script></section><section data-markdown><script type="text/template">
+That's significant because the `ArrayList<E>` was programmed so that "`E`" would be some sort of `Object`.
+
+![wrapper class tree](images/wrapper-class-inheritance.png)
+
+Later on, it will be more clear why this matters.
+</script></section><section data-markdown><script type="text/template">
+Sometimes you'll hear the word "box" instead of "wrap" in this context.
+
+![Integer n boxes int](images/integer-box-int.png)
+
+As in: "The `Integer n `boxes the` int 42`."
+</script></section><section data-markdown><script type="text/template">
+Okay, back to gambling.
+</script></section><section data-markdown><script type="text/template">
+We need to fill our list with random numbers.
+
+The user of the method will supply `howMany` we need to add to the list.
+
+```java
+
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    for (int i = 0; i < howMany; i++)  ⬅︎
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);
+    }
+
+    System.out.println(lotto);
+}
+
+```
+
+So we need a loop that runs `howMany` times.
+</script></section><section data-markdown><script type="text/template">
+Good for you if you noticed something suspicious about this step:
+
+```java
+
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    for (int i = 0; i < howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+
+```
+
+What would seem to be the problem with this line?
+
+Maybe you could find two different issues with this.
+</script></section><section data-markdown><script type="text/template">
+- Issue 1: What's the deal with adding an `int` to an `ArrayList<Integer>`?
+
+- Issue 2: What if we get the same number twice by chance? That's not how lotteries work.
+
+
+```java
+
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    for (int i = 0; i < howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+
+```
+</script></section><section data-markdown><script type="text/template">
+Issue 2 is a real problem that we will address in a moment.
+
+Issue 1 would be a problem, except that Java will automatically convert `int`s into `Integer`s when necessary.
+</script></section><section data-markdown><script type="text/template">
+Conversions between `int` and `Integer` happen whenever you need to use one type like the other.
+
+<br><br>
+It's a feature called autoboxing / autounboxing.
+</script></section><section data-markdown><script type="text/template">
+Back to issue 2.
+
+How would you fix the problem of potentially getting duplicate numbers in the list?
+
+```java
+
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    for (int i = 0; i < howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+
+```
+
+Take some time now and find a solution.
+</script></section><section data-markdown><script type="text/template">
+Hint 1: 
+
+Consider using an `ArrayList` method.
+</script></section><section data-markdown><script type="text/template">
+Hint 2: 
+
+Use the `contains()` method in an if statement to guard this line.
+
+```java
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    for (int i = 0; i < howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        lotto.add(r);  ⬅︎
+    }
+
+    System.out.println(lotto);
+}
+```
+</script></section><section data-markdown><script type="text/template">
+This is a little better, but now we've introduced another problem.
+
+```java
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    for (int i = 0; i < howMany; i++)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        if (!lotto.contains(r)) ⬅︎
+        {
+            lotto.add(r);  
+        }
+    }
+
+    System.out.println(lotto);
+}
+```
+What is it?
+</script></section><section data-markdown><script type="text/template">
+We may have fewer than `howMany` items in the list.
+
+Think of a way to fix this issue.
+</script></section><section data-markdown><script type="text/template">
+Maybe this is the best way:
+```java
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    while (lotto.size() < howMany)    ⬅︎
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        if (!lotto.contains(r))
+        {
+            lotto.add(r);  
+        }
+    }
+
+    System.out.println(lotto);
+}
+```
+</script></section><section data-markdown><script type="text/template">
+There is one more issue.
+
+Can you think of a reason why this method would potentially get stuck in an infinite loop?
+
+```java
+static void luckyNumbers(int howMany)
+{
+    ArrayList<Integer> lotto = new ArrayList<Integer>();
+
+    while (lotto.size() < howMany)
+    {
+        // Generate random int from 0 to 99
+        int r = (int) (Math.random() * 100);
+
+        if (!lotto.contains(r))
+        {
+            lotto.add(r);  
+        }
+    }
+
+    System.out.println(lotto);
+}
+```
+</script></section><section data-markdown><script type="text/template">
+If `howMany = 137`, for instance, the method would never complete.
+
+```java
+static void luckyNumbers(int howMany)
+{
+    if (howMany > 100)   ⬅︎
+    {
+        throw new IllegalArgumentException( "Input out of " +
+        "range. Cannot generate more than 100 unique values " + 
+        "from 0-99.");
+    }
+
+    ...
+}
+```
+
+So we'll check for a valid input right at the start.
+</script></section><section data-markdown><script type="text/template">
+Tha's all for this example.
+
+We've seen that the ArrayList's `contains()` method is handy!
+
+It was easier to write this with an ArrayList than it would have been to use a normal array.
+</script></section><section data-markdown><script type="text/template">
+Let's see one more example.
+
+This time we'll make our own simple class and put objects of the class in the ArrayList.
+</script></section></section><section ><section data-markdown><script type="text/template">
+### Final ArrayList Example
+
+ArrayLists and custom objects
+</script></section><section data-markdown><script type="text/template">
+It turns out that playing the lottery is a great way to lose money, not make it.
+
+The real money is in starting up a casino.
+
+The house always wins.
+</script></section><section data-markdown><script type="text/template">
+Let's make some playing cards that will be used for our games.
+</script></section><section data-markdown><script type="text/template">
+A simple `Card` class might look like this:
+
+```java
+class Card
+{
+    enum Suit { SPADES, HEARTS, CLUBS, DIAMONDS }
+    
+    Suit suit;
+    int rank;
+
+    
+}
+```
+
+We use an inner `enum` class to enumerate the suits.
+
+The "rank" of a card (Ace - King) will be an `int`.
+
+This design decision lets us easily compare and order cards (should we ever decide to do that).
+</script></section><section data-markdown><script type="text/template">
+Let's think about the constructor:
+
+```java
+...
+
+Card(int rank, Suit suit)
+{
+    this.rank = rank;  ⬅︎
+    this.suit = suit;
+}
+
+...
+```
+
+The suits are enumerated, so they can't be given an invalid value.
+
+The ranks, though? 
+
+They could be given an input that's out of range.
+</script></section><section data-markdown><script type="text/template">
+Exercise:
+
+Add data validation to the constructor. 
+
+```java
+...
+
+Card(int rank, Suit suit)
+{
+    this.rank = rank;  ⬅︎
+    this.suit = suit;
+}
+
+...
+```
+<aside class="notes"><p>1 = Ace and 13 = King.</p>
+</aside></script></section><section data-markdown><script type="text/template">
+We throw an exception if the input is out of range:
+
+```java
+...
+
+Card(int rank, Suit suit)
+{
+    if (rank < 1 || rank > 13)
+    {
+        throw new IllegalArgumentException(
+            "Card ranks must be between 1 and 13.");
+    }
+    this.rank = rank;
+    this.suit = suit;
+}
+
+...
+```
+</script></section><section data-markdown><script type="text/template">
+We will add one more method to the `Card` class.
+
+We will override `toString` so we can print our cards out like this: ♠︎A ♡3 ♣︎K ♢J .
+
+Card suits are in the unicode list of symbols.
+
+So we can use them inside of Strings in our program.
+</script></section><section data-markdown><script type="text/template">
+We add the suit symbol and the rank symbol to a String and return it at the end:
+
+```java
+...
+
+@Override
+public String toString()
+{
+    String cardString = "";
+
+    if (suit == Suit.SPADES) cardString += "♠︎";
+    else if (suit == Suit.HEARTS) cardString += "♡︎";
+    else if (suit == Suit.CLUBS) cardString += "♣︎";
+    else cardString += "♢";
+
+    if (rank == 1) cardString += "A";
+    else if (rank == 11) cardString += "J";
+    else if (rank == 12) cardString += "Q";
+    else if (rank == 13) cardString += "K";
+    else cardString += Integer.toString(rank);
+
+    return cardString;
+}
+
+...
+```
+</script></section><section data-markdown><script type="text/template">
+Now we have a class to represent cards.
+
+Let's create a class that will represent a collection of cards.
+</script></section><section data-markdown><script type="text/template">
+Our `Deck` class will wrap an ArrayList. 
+
+It will include the basic methods that all card games need.
+</script></section><section data-markdown><script type="text/template">
+This is a good start:
+
+```java
+import java.util.ArrayList;
+
+class Deck
+{
+    ArrayList<Card> cards;
+
+    Deck()
+    {
+        cards = new ArrayList<Card>();
+    }
+}
+```
+</script></section><section data-markdown><script type="text/template">
+But adding cards this way is going to get ugly:
+
+```java
+...
+
+Deck()
+{
+    cards = new ArrayList<Card>();
+
+    cards.add(new Card(1, Card.Suit.SPADES));
+    cards.add(new Card(2, Card.Suit.SPADES));
+    cards.add(new Card(3, Card.Suit.SPADES));
+    cards.add(new Card(4, Card.Suit.SPADES));
+    // sigh...
+}
+
+...
+```
+There's gotta be a better way to fill this ArrayList.
+
+Exercise: Abandon this strategy. Instead, write a concise section of code to create a complete deck.
+</script></section><section data-markdown><script type="text/template">
+Here's a way using an outer for loop for the suits.
+
+The inner for loop cycles through all 13 ranks.
+```java
+...
+
+Deck()
+{
+    cards = new ArrayList<Card>();
+    
+    for (int s = 1; s < 5; s++)
+    {
+        for (int r = 1; r < 14; r++)
+        {
+            Card.Suit suit;
+            if (s == 1) suit = Card.Suit.SPADES;
+            else if (s == 2) suit = Card.Suit.HEARTS;
+            else if (s == 3) suit = Card.Suit.CLUBS;
+            else suit = Card.Suit.DIAMONDS;
+            
+            cards.add(new Card(r, suit));
+        }
+    }
+}
+
+...
+```
+</script></section><section data-markdown><script type="text/template">
+Looping through the values of an enum is a pretty common task.
+
+So Java gives us the `values()` method to return an array of the enum's values.
+</script></section><section data-markdown><script type="text/template">
+So here's an even more concise way to write that part of the constructor:
+
+```java
+Deck()
+{
+    cards = new ArrayList<Card>();
+    
+    for (Card.Suit s : Card.Suit.values())  ⬅︎
+    {
+        for (int r = 1; r < 14; r++)
+        {
+            cards.add(new Card(r, s));
+        }
+    }
+}
+```
+The two styles of for loop working in harmony...
+
+It's beautiful.
+</script></section><section data-markdown><script type="text/template">
+Now we have a rather orderly deck.
+
+We need a method to randomize it.
+</script></section><section data-markdown><script type="text/template">
+Two possible strategies occur:
+1. We could shuffle and deal off the end of the array.
+2. We could pick a random index and deal from "the middle" without shuffling.
+</script></section><section data-markdown><script type="text/template">
+Let's pursue strategy 2. 
+
+It seems simpler to code.
+</script></section><section data-markdown><script type="text/template">
+Exercise: 
+
+Write a method called `randomDeal()` that returns a `Card` object from a random position in the deck. 
+
+The method should also remove that card from the deck's ArrayList. 
+
+We don't want no double-dealing. 
+
+We're an honest establishment!
+</script></section><section data-markdown><script type="text/template">
+Hint 1:
+
+```java
+Card randomDeal()
+{
+    int randIndex = ...
+}
+```
+</script></section><section data-markdown><script type="text/template">
+Hint 2:
+
+```java
+Card randomDeal()
+{
+    int randIndex = (int) (Math.random() * cards.size());
+
+    Card c = ...
+    
+    ...
+    
+    return c;
+}
+```
+</script></section><section data-markdown><script type="text/template">
+Solution:
+
+```java
+Card randomDeal()
+{
+    int randIndex = (int) (Math.random() * cards.size());
+
+    Card c = cards.get(randIndex);
+    
+    cards.remove(randIndex);
+    
+    return c;
+}
+```
+
+We could also have used `cards.remove(c)`
+
+But removing by index will be quicker than searching to remove a particular object.
+</script></section><section data-markdown><script type="text/template">
+Let's also appreciate that our method only works because of how ArrayLists keep their data.
+
+Removing values at an index doesn't leave behind any annoying gaps.
+</script></section><section data-markdown><script type="text/template">
+That's all for the examples.
+
+Try some challenge problems.
+</script></section></section><section ><section data-markdown><script type="text/template">
+### Challenge Problems:
+</script></section><section data-markdown><script type="text/template">
+Challenge 1:
+
+Write a static method called `splitEvenOdd(int[] numbers)`. It takes an ordinary `int[]` array of numbers and classifies them by putting them into an evens and odds ArrayList. 
+
+Then it should print them to the console.
+
+Example input: `{8, 2, 9, 1, 3, 11, 7, 6, 7}`
+
+Expected output:
+```text
+
+Evens: [8, 2, 6]
+Odds: [9, 1, 3, 11, 7, 7]
+
+```
+Hint: Use `n % 2 == 0` to test whether n is even.
+</script></section><section data-markdown><script type="text/template">
+Challenge 2: 
+
+Write the method `dealHands()` that will deal out 5 card poker hands to four different players.
+
+Their hands should be printed to the console like this:
+
+```text
+
+Player 1: ♠6 ♠A ♣4 ♡8 ♡2 
+Player 2: ♡5 ♢3 ♡K ♣A ♣K 
+Player 3: ♡J ♡7 ♢A ♣8 ♣2 
+Player 4: ♣10 ♢K ♢7 ♡Q ♡4
+
+```
+</script></section><section data-markdown><script type="text/template">
+Challenge 3: 
+
+A list of prime numbers can be generated by trial division. Write the static method `printPrimesUpto(int n) ` by implementing the following algorithm.
+
+Algorithm: 
+1. Begin the list of primes with only 2 in it.
+2. Iterate from 3 to `n`.
+3. Add the number to the list of primes if it is not divisible by any number in the list. 
+
+Hint: Use `%` to get the division remainder.
+</script></section><section data-markdown><script type="text/template">
+Challenge 3:
+
+A list of fibonacci numbers begins `[1, 1, ...]`  and can be continued by appending the sum of the last two elements in the sequence. Write the static method `printFibs(int howMany)` that will print out a list of `howMany` fibonacci numbers.
+
+Example: calling `printFibs(10)` should give the following console output:
+
+```text
+
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+```
+</script></section><section data-markdown><script type="text/template">
+Challenge 4:
+
+Write the static method `removeDuplicates(String[] words)` that takes an ordinary String[] array and prints the same array back with duplicates removed:
+
+Example input: `{"The", "land", "of", "of", "the", "land", "free", "of", "the", "free"}`
+
+Expected output:
+
+```text
+
+[The, land, of, the, free]
+
+```
+
+Notice that "The" and "the" are different Strings.
+</script></section><section data-markdown><script type="text/template">
+Challenge 5:
+
+Rewrite the `luckyNumbers()` method to use a normal `int[]` array. Avoid using an ArrayList altogether.
+
+The method must have the same functionality and print to the console in the same format.
+</script></section><section data-markdown><script type="text/template">
+Challenge 6:
+
+Implement a `shuffle()` method for our `Deck` class.
+
+Write the method twice... 
+1. The first time will be based on your own idea of how to randomize an ordered set. Try anything you think will work.
+
+2. And the second time you write the method will be after researching the Fisher-Yates shuffling algorithm. Do not specifically search for a Java implementation of the algorithm. Your goal is to implement it in Java on your own.
+</script></section><section data-markdown><script type="text/template">
+Good luck!
+</script></section></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"controls":true,"progress":true,"history":true,"center":true,"slideNumber":false,"transition":"none"}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>
